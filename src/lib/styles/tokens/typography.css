@@ -1,11 +1,55 @@
 :root {
-    --font-primary: "Georama", sans-serif;
+  /* Font Families */
+  --font-primary: "Georama", sans-serif;
+
+  /* Font Sizes */
+  --font-size-xs: 20px;    /* Testimonial text */
+  --font-size-sm: 30px;    /* Hh1 */
+  --font-size-lg: 64px;    /* Hh2 */
+
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* Line Heights */
+  --line-height-tight: 1;
+  --line-height-normal: 1.2;
+
+  /* Letter Spacing */
+  --letter-spacing-normal: 0;
+
+  /* Font Variation Settings */
+  --font-variation-width: "wdth" 100;
 }
 
-.georama {
-  font-family: "Georama", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
-  font-variation-settings: "wdth" 100;
+.georama-regular {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-regular);
+  font-variation-settings: var(--font-variation-width);
+}
+
+.georama-medium {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  font-variation-settings: var(--font-variation-width);
+}
+
+.georama-semibold {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
+  font-variation-settings: var(--font-variation-width);
+}
+
+/* Text Color Utilities */
+.text-primary {
+  color: var(--color-content-primary);
+}
+
+.text-accent-yellow {
+  color: var(--third-yellow-500);
+}
+
+.text-accent-red {
+  color: var(--secondary-red-400);
 }

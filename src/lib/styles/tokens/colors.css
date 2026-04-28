@@ -1,0 +1,23 @@
+:root {
+  /* Base Colors - Light Mode */
+  --color-background-light: #ffffff;
+  --color-content-light: #070707;
+
+  /* Base Colors - Dark Mode */
+  --color-background-dark: #070707;
+  --color-content-dark: #ffffff;
+
+  /* Semantic Colors - Default to Dark Mode */
+  --color-background-primary: var(--color-background-dark);
+  --color-content-primary: var(--color-content-dark);
+
+  /* Accent Colors - Theme Independent */
+  --third-yellow-500: #f5d547;
+  --secondary-red-400: #d68176;
+}
+
+/* Light Mode Override */
+[data-theme="light"] {
+  --color-background-primary: var(--color-background-light);
+  --color-content-primary: var(--color-content-light);
+}

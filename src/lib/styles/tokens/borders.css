@@ -1,0 +1,11 @@
+:root {
+  /* Border Widths */
+  --border-width-thin: 4px;
+
+  /* Border Radii */
+  --border-radius-sm: var(--spacing-4);  /* 16px */
+  --border-radius-md: var(--spacing-5);  /* 20px */
+
+  /* Aspect Ratios */
+  --aspect-ratio-testimonial-image: 618 / 355;
+}
