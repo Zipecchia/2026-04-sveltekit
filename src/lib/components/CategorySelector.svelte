@@ -61,15 +61,15 @@
   let serviceDetailGradient = $derived.by(() => {
     switch(selectedCategory) {
       case 'campi':
-        return 'linear-gradient(180deg, rgb(72, 172, 220) 7.6923%, rgba(72, 172, 220, 0) 100%), linear-gradient(90deg, #070707 0%, #070707 100%)';
+        return 'linear-gradient(180deg, rgb(72, 172, 220) 7.6923%, rgba(72, 172, 220, 0) 100%), linear-gradient(90deg, var(--color-background-primary) 0% 100%)';
       case 'spogliatoi':
-        return 'linear-gradient(180deg, rgb(214, 129, 118) 7.6923%, rgba(214, 129, 118, 0) 100%), linear-gradient(90deg, #070707 0%, #070707 100%)';
+        return 'linear-gradient(180deg, rgb(214, 129, 118) 7.6923%, rgba(214, 129, 118, 0) 100%), linear-gradient(90deg, var(--color-background-primary) 0% 100%)';
       case 'servizi':
-        return 'linear-gradient(180deg, rgb(245, 213, 71) 7.6923%, rgba(245, 213, 71, 0) 100%), linear-gradient(90deg, #070707 0%, #070707 100%)';
+        return 'linear-gradient(180deg, rgb(245, 213, 71) 7.6923%, rgba(245, 213, 71, 0) 100%), linear-gradient(90deg, var(--color-background-primary) 0% 100%)';
       case 'overall':
-        return 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #070707 100%), linear-gradient(270deg, rgb(245, 213, 71) 0%, rgb(214, 129, 118) 50%, rgb(101, 145, 213) 100%)';
+        return 'linear-gradient(0deg, var(--color-background-primary) 20%, transparent 100%), linear-gradient(270deg, rgb(245, 213, 71) 0%, rgb(214, 129, 118) 50%, rgb(72, 172, 220) 100%)';
       default:
-        return 'linear-gradient(180deg, rgb(72, 172, 220) 7.6923%, rgba(72, 172, 220, 0) 100%), linear-gradient(90deg, #070707 0%, #070707 100%)';
+        return 'linear-gradient(180deg, rgb(72, 172, 220) 7.6923%, rgba(72, 172, 220, 0) 100%), linear-gradient(90deg, var(--color-background-primary) 0% 100%)';
     }
   });
 </script>
@@ -124,7 +124,7 @@
     justify-content: center;
     align-items: center;
     padding: 20px 160px 32px;
-    background: #070707;
+    background: var(--color-background-primary);
   }
 
   .service-button {
@@ -132,7 +132,7 @@
     height: 130px;
     border: 3.94px solid #dbdbdb;
     border-radius: 984.055px;
-    background: #070707;
+    background: var(--color-background-primarys);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -149,7 +149,7 @@
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    background: var(--color-background-primary);
     opacity: 0;
     transition: opacity 0.3s ease;
   }
@@ -173,7 +173,7 @@
   }
 
   .service-button.gradient-border {
-    background: linear-gradient(#070707, #070707) padding-box,
+    background: linear-gradient(var(--color-background-primary)) padding-box,
                 linear-gradient(90deg, #f5d547 0%, #d68176 50%, #48acdc 100%) border-box;
     border: 3.94px solid transparent;
     box-shadow: 0 0 20px rgba(245, 213, 71, 0.24);

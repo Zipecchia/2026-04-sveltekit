@@ -10,6 +10,7 @@
     image: string;
     border: string;
     badgeLabel: string;
+    description: string;
   };
 
   type ArenaCard = {
@@ -38,7 +39,8 @@
       city: 'Brugherio (MB)',
       image: images.palakennedy,
       border: '#48acdc',
-      badgeLabel: 'Miglior campo'
+      badgeLabel: 'Miglior campo',
+      description: 'Superficie professionale in taraflex e illuminazione LED di ultima generazione.'
     },
     {
       label: 'PALAZ. ELEMENTARI',
@@ -47,7 +49,8 @@
       city: 'Cassina de Pecchi (MI)',
       image: images.palazElementari,
       border: '#d68176',
-      badgeLabel: 'Migliori spogliatoi'
+      badgeLabel: 'Migliori spogliatoi',
+      description: 'Ampi spazi, docce moderne e pulizia impeccabile dopo ogni turno.'
     },
     {
       label: 'BAR ENJOY',
@@ -56,7 +59,8 @@
       city: 'Cernusco sul Naviglio (MI)',
       image: images.barEnjoy,
       border: '#f5d547',
-      badgeLabel: 'Migliori servizi'
+      badgeLabel: 'Migliori servizi',
+      description: 'Area ristoro completa con vista sui campi e ottima selezione snack.'
     }
   ];
 
@@ -75,7 +79,7 @@
     },
     {
       label: 'BEST SERVIZI',
-      description: "Il bar di questa palestra è davvero eccezionale! Dalle centrifughe fresche e personalizzate agli snack salutari perfetti per il post-allenamento, c’è sempre qualcosa di gustoso e adatto a ogni esigenza. Ma non è solo il bar a fare la differenza: l’intera struttura offre servizi di alto livello, ben organizzati e pensati per il massimo comfort. Dall’accoglienza alla qualità degli spazi, tutto contribuisce a creare un’esperienza completa e piacevole.",
+      description: "Il bar di questa palestra è davvero eccezionale! Dalle centrifughe fresche e personalizzate agli snack salutari perfetti per il post-allenamento, c’è sempre qualcosa di gustoso e adatto a ogni esigenza. Ma non è solo il bar a fare la differenza: l’intera struttura offre servizi di alto livello, ben organizzati e pensati per il massimo comfort. Dall’accoglienza alla qualità degli spazi, tutto contribuisce a creare un’esperienza completa e piacevole. Un ambiente perfetto!",
       image: images.barArena,
       border: '#f5d547'
     }
@@ -88,59 +92,65 @@
     <div class="hero-copy">
       <h1>Venue<br />Advanced<br />Radar</h1>
       <div class="hero-tagline">Trova. Valuta. Gioca.</div>
-      <p>Tutte le strutture sportive della Lombardia a portata di mano. Recensioni reali su campi da gioco, spogliatoi e servizi per chi non si accontenta di un posto qualunque.</p>
+      <p>Tutte le strutture sportive della Lombardia a portata di mano.</p>
     </div>
   </div>
 
   <CategorySelector />
 
-<!-- SEZIONE HIGHLIGHTS -->
-<section class="highlights-section" id="reviews">
-  <div class="section-header">
-    <h2>I migliori del 2025</h2>
-    <p>Scopri chi si è classificato al top in ogni categoria durante l’ultimo anno</p>
-  </div>
+  <section id="campi" class="anchor-target" aria-hidden="true"></section>
+  <section id="spogliatoi" class="anchor-target" aria-hidden="true"></section>
+  <section id="servizi" class="anchor-target" aria-hidden="true"></section>
+  <section id="overall" class="anchor-target" aria-hidden="true"></section>
 
-  <div class="highlight-grid">
-    {#each highlights as highlight}
-      <article class="highlight-card" style="background-color: {highlight.border}">
-        <!-- Floating Badge -->
-        <div class="new-badge">
-          <div class="badge-circle" style="background-color: {highlight.border}">
-            <span>2025</span>
-          </div>
-          <div class="badge-ribbon" style="background-color: {highlight.border}">
-            {highlight.badgeLabel}
-          </div>
-        </div>
+  <!-- SEZIONE HIGHLIGHTS -->
+  <section class="highlights-section" id="reviews">
+    <div class="section-header">
+      <h2>I migliori del 2025</h2>
+      <p>Scopri chi si è classificato al top in ogni categoria</p>
+    </div>
 
-        <div class="highlight-media">
-          <img src={highlight.image} alt={highlight.label} />
-        </div>
-
-        <div class="highlight-body">
-          <h3 class="highlight-title">{highlight.label}</h3>
-          <div class="highlight-details" style="display: flex; align-items: flex-start; gap: 8px;">
-            <img 
-              class="icon-pin" 
-              src={images.mapPin} 
-              alt="Posizione" 
-              style="width: 14px !important; height: 18px !important; object-fit: contain !important; flex-shrink: 0; margin-top: 4px; filter: brightness(0);" 
-              />
-            <div class="address-text" style="display: block;">
-            <p><strong>{highlight.location}</strong></p>
-            <p>{highlight.address}</p>
-            <p>{highlight.city}</p>
+    <div class="highlight-grid">
+      {#each highlights as highlight}
+        <div class="card-wrapper">
+          <article class="highlight-card" style="background-color: {highlight.border}">
+            <div class="new-badge">
+              <div class="badge-circle" style="background-color: {highlight.border}">
+                <span>2025</span>
+              </div>
+              <div class="badge-ribbon" style="background-color: {highlight.border}">
+                {highlight.badgeLabel}
+              </div>
             </div>
+
+            <div class="highlight-media">
+              <img src={highlight.image} alt={highlight.label} />
+            </div>
+
+            <div class="highlight-body">
+              <h3 class="highlight-title">{highlight.label}</h3>
+              <div class="highlight-details">
+                <img class="icon-pin" src={images.mapPin} alt="Posizione" />
+                <div class="address-text">
+                  <p><strong>{highlight.location}</strong></p>
+                  <p>{highlight.address}</p>
+                  <p>{highlight.city}</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Sliding Block -->
+          <div class="sliding-description" style="background-color: {highlight.border}dd">
+            <p>{highlight.description}</p>
           </div>
         </div>
-      </article>
-    {/each}
-  </div>
-  <a class="link-arrow" href="#reviews">Vedi di più <span>→</span></a>
-</section>
+      {/each}
+    </div>
+    <a class="link-arrow" href="#reviews">Vedi di più <span>→</span></a>
+  </section>
 
-  <!-- SEZIONE ARENA (Le card nere in basso) -->
+  <!-- SEZIONE ARENA -->
   <section class="arena-section" id="about">
     <div class="gradient-overlay top"></div>
     <div class="gradient-overlay bottom"></div>
@@ -158,9 +168,7 @@
             <img src={card.image} alt={card.label} />
           </div>
           <div class="arena-body">
-            <div class="rating-stars" style="color: {card.border};">
-              ★★★★★
-            </div>
+            <div class="rating-stars" style="color: {card.border};">★★★★★</div>
             <p>{card.description}</p>
           </div>
         </article>
@@ -176,184 +184,145 @@
 </section>
 
 <style>
-  /* RESET & BASE */
+  /* BASE */
   .page-home {
     min-height: 100vh;
     font-family: var(--font-primary);
-    background: linear-gradient(89deg, #6591d5 0.35%, #d68176 53.84%, #f5d547 101.68%);
+    background: var(--color-background-primary);
+    color: var(--color-content-primary);
   }
 
-  .section-header {
-    text-align: center;
-    margin-bottom: 48px;
-    color: white;
-  }
-  .section-header h2 { font-size: 50px;font-weight:600; margin: 0; }
+  .section-header { text-align: center; margin-bottom: 48px; color: var(--color-content-primary); }
+  .section-header h2 { font-size: 50px; font-weight: 600; margin: 0; }
   .section-header p { font-size: 26px; opacity: 0.9; }
 
   /* HERO */
-  .hero-shell {
-    padding: 72px 24px;
-    text-align: center;
+  .hero-shell { 
+    padding: 72px 24px; 
+    text-align: center; 
+    background: 
+    linear-gradient(0deg, var(--color-background-primary) 30%, transparent 100%), 
+    linear-gradient(90deg, #48acdc 20%, #d68176 50%, #f5d547 80%);}
+  .hero-copy h1 { 
+    font-size: clamp(4rem, 8vw, 6.5rem); 
+    font-weight: 500; line-height: 0.8; 
+    color: white; }
+  .hero-tagline { font-size: 48px; font-weight: 600; color: var(--color-content-primary); margin-top: 10px; }
+  .hero-copy p { font-size: 28px; max-width: 800px; margin: 20px auto; color: var(--color-content-primary); }
+
+  /* HIGHLIGHTS SECTION */
+  .highlights-section { background-color: var(--color-background-primary); padding: 120px 24px; }
+  .highlight-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, 320px); 
+    justify-content: center; 
+    gap: 80px 40px; 
+  }
+
+  .card-wrapper {
     position: relative;
-    background: linear-gradient(180deg, transparent 0%, #070707 100%);
-  }
-  .hero-copy h1 { font-size: clamp(4rem, 8vw, 6.5rem);font-weight: 500; line-height: 0.8; margin: 0; color: white; }
-  .hero-tagline { font-size: 48px; font-weight: 600; color: white; margin-top: 10px; }
-  .hero-copy p { font-size: 28px; max-width: 800px; margin: 20px auto; color: white; }
-
-  /* --- STILE 1: HIGHLIGHT CARDS (AS PER IMAGE) --- */
-.highlights-section { 
-  background-color: #000; 
-  padding: 120px 24px; /* Increased padding for the floating badges */
-}
-
-.highlight-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 320px); /* Slightly narrower cards */
-  justify-content: center;
-  gap: 60px 40px;
-}
-
-.highlight-card {
-  border-radius: 24px;
-  position: relative;
-  color: #070707; /* Dark text as in image */
-  padding: 8px; /* Spacing between image and card edge */
-  display: flex;
-  flex-direction: column;
-  border: none; /* No border needed as the bg handles it */
-}
-
-/* Floating Badge Construction */
-.new-badge {
-  position: absolute;
-  top: -25px;
-  left: -15px;
-  display: flex;
-  align-items: center;
-  z-index: 10;
-}
-
-.badge-circle {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgb(0, 0, 0);
-  font-weight: bold;
-  font-size: 14px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
-.badge-ribbon {
-  margin-left: -10px;
-  padding: 6px 15px 6px 20px;
-  color: rgb(0, 0, 0);
-  font-size: 11px;
-  font-weight: bold;
-  text-transform: uppercase;
-  clip-path: polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%);
-  border: 1px solid rgba(255,255,255,0.2);
-}
-
-.highlight-media img {
-  width: 100%;
-  aspect-ratio: 16/10;
-  object-fit: cover;
-  display: block;
-  border-radius: 18px; /* Rounded corners for the image inside the card */
-}
-
-.highlight-body { 
-  padding: 16px 8px; 
-}
-
-.highlight-title { 
-  font-size: 24px; 
-  font-weight: 600; 
-  margin: 0 0 4px 0; 
-  font-family: var(--font-primary);
-}
-
-.highlight-details { 
-  display: flex; 
-  gap: 8px;
-  /* align-items: flex-start; is already set here in previous step */
-}
-
-.address-text p { 
-  margin: 0; 
-  font-size: 14px; 
-  line-height: 1.2; 
-  font-weight: 500;
-}
-
-.icon-pin { 
-  /* 1. Size control */
-  width: 14px; /* Slightly smaller as requested */
-  
-  /* 2. Anti-stretching fix */
-  height: auto;           /* Allow aspect ratio to define height */
-  object-fit: contain;     /* Ensure image fits its container box */
-  align-self: flex-start;  /* Prevent stretching by parent flexbox */
-
-  /* 3. Positioning and style */
-  margin-top: 3px;         /* Vertically align with the first line of text */
-  filter: brightness(0);   /* Keep the pin black */
-}
-
-  /* --- STILE 2: ARENA CARDS (NERE) --- */
-  .arena-section {
-    padding: 100px 24px;
-    background: linear-gradient(180deg, #000 0%, #48acdc 20%, #d68176 50%, #f5d547 80%, #000 100%);
-    position: relative;
-  }
-
-  .arena-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 320px);
-    justify-content: center;
-    gap: 40px;
-    position: relative; z-index: 2;
-  }
-
-  .arena-card {
-    background: #070707; /* Sfondo Nero */
-    border: 2px solid;
-    border-radius: 28px;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
-    min-height: 520px;
   }
 
+  .highlight-card {
+    border-radius: 24px;
+    position: relative;
+    z-index: 2; /* Over the sliding block */
+    color: var(--color-content-primary);
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-card-primary);
+    border: 1px solid var(--color-border);
+    transition: transform 0.3s ease;
+  }
+
+  /* SLIDING DESCRIPTION - Matched to image_f204a2.png */
+  .sliding-description {
+    position: absolute;
+    /* bottom: 0; Align to bottom so it slides out from the edge */
+    bottom: 0;
+    left: 8px; /* Slightly inset from the card edges */
+    right: 8px;
+    z-index: 1; 
+    
+    /* Style matched to image_f204a2.png */
+    background-color: var(--color-surface-strong);
+    color: var(--color-content-primary);
+    padding: 32px 20px 20px 20px; /* Extra top padding to handle the overlap */
+    border: 4px solid var(--color-border);
+    border-radius: 28px; /* Very rounded corners per the image */
+    
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 500;
+    
+    /* Hidden State */
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  @media (hover: hover) {
+    .card-wrapper:hover .sliding-description {
+      opacity: 1;
+      /* Slides down. 100% puts it exactly under the card */
+      transform: translateY(100%); 
+    }
+    
+    .card-wrapper:hover .highlight-card {
+      /* Lift the card slightly to reveal the "drawer" sliding out */
+      transform: translateY(-10px);
+    }
+  }
+
+  @media (hover: none) {
+    .card-wrapper { 
+      margin-bottom: 120px; /* Make space so cards don't overlap on mobile */
+    }
+    .sliding-description {
+      position: relative;
+      opacity: 1;
+      transform: translateY(0);
+      margin-top: -25px; /* Pull it up to "dock" with the card */
+      padding-top: 35px;
+      left: 0;
+      right: 0;
+      background-color: var(--color-surface-strong) !important;
+      border: 3px solid var(--color-border);
+    }
+  }
+
+  /* BADGES & MEDIA */
+  .new-badge { position: absolute; top: -25px; left: -15px; display: flex; align-items: center; z-index: 10; }
+  .badge-circle { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--color-border); display: flex; align-items: center; justify-content: center; color: var(--color-content-primary); background: var(--color-surface-strong); font-weight: bold; }
+  .badge-ribbon { margin-left: -10px; padding: 6px 15px; color: var(--color-content-primary); font-size: 11px; font-weight: bold; clip-path: polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%); background: var(--color-surface-strong); }
+  
+  .highlight-media img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 18px; }
+  .highlight-body { padding: 16px 8px; }
+  .highlight-title { font-size: 24px; font-weight: 600; margin-bottom: 4px; color: var(--color-content-primary); }
+  .highlight-details { display: flex; gap: 8px; }
+  .address-text p { margin: 0; font-size: 14px; line-height: 1.2; color: var(--color-content-primary); }
+  .icon-pin { width: 14px; height: 18px; filter: brightness(0); margin-top: 4px; }
+
+  /* ARENA SECTION */
+  .arena-section { padding: 100px 24px; background: linear-gradient(180deg, var(--color-background-primary) 0%, #48acdc 20%, #d68176 50%, #f5d547 80%, var(--color-background-primary) 100%); position: relative; }
+  .arena-grid { display: grid; grid-template-columns: repeat(auto-fit, 320px); justify-content: center; gap: 40px; position: relative; z-index: 2; }
+  .arena-card { background: var(--color-card-primary); border: 2px solid var(--color-border); border-radius: 28px; overflow: hidden; display: flex; flex-direction: column; min-height: 480px; }
   .arena-media { padding: 8px 8px 0 8px; }
   .arena-media img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 20px; }
+  .arena-body { padding: 12px; color: var(--color-content-primary); }
+  .rating-stars { font-size: 32px; text-align: center; margin-bottom: 10px; letter-spacing: 5px; }
 
-  .arena-body { padding: 4px 12px 12px 12px; color: white; text-align: left; }
-  .rating-stars { font-size: 40px; text-align:center; margin-bottom: 4px; letter-spacing: 10px}
-  .arena-body p { font-size: 18px; line-height: 1.5; margin: 0; }
-
-  /* OVERLAYS & UTILS */
+  /* UTILS */
   .gradient-overlay { position: absolute; left: 0; right: 0; height: 150px; z-index: 1; pointer-events: none; }
-  .gradient-overlay.top { top: 0; background: linear-gradient(to bottom, #000, transparent); }
-  .gradient-overlay.bottom { bottom: 0; background: linear-gradient(to top, #000, transparent); }
-
-  .centered .overline { font-size: 22px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
+  .gradient-overlay.top { top: 0; background: linear-gradient(to bottom, var(--color-background-primary), transparent); }
+  .gradient-overlay.bottom { bottom: 0; background: linear-gradient(to top, var(--color-background-primary), transparent); }
   .centered h2 { font-size: 60px; }
-
-  .link-arrow {
-    display: block; width: fit-content; margin: 40px auto 0;
-    color: white; font-size: 28px; text-decoration: none; font-weight: 500;
-    position: relative; z-index: 2;
-  }
-
-  .page-footer { padding: 60px; background: #000; text-align: center; }
-  .page-footer img { height: 45px; }
+  .link-arrow { display: block; width: fit-content; margin: 40px auto 0; color: var(--color-content-primary); font-size: 28px; text-decoration: none; position: relative; z-index: 2; }
+  .page-footer { padding: 60px; background: var(--color-surface-primary); text-align: center; }
 
   @media (max-width: 1150px) {
     .highlight-grid, .arena-grid { grid-template-columns: 1fr; max-width: 370px; margin: 0 auto; }

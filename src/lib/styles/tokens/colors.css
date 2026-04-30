@@ -2,14 +2,27 @@
   /* Base Colors - Light Mode */
   --color-background-light: #ffffff;
   --color-content-light: #070707;
+  --color-surface-light: #f4f5f7;
+  --color-surface-strong-light: #ffffff;
+  --color-card-light: #ffffff;
+  --color-border-light: rgba(7, 7, 7, 0.12);
 
   /* Base Colors - Dark Mode */
   --color-background-dark: #070707;
   --color-content-dark: #ffffff;
+  --color-surface-dark: #121212;
+  --color-surface-strong-dark: #1f1f1f;
+  --color-card-dark: #0f0f0f;
+  --color-border-dark: rgba(255, 255, 255, 0.12);
 
   /* Semantic Colors - Default to Dark Mode */
   --color-background-primary: var(--color-background-dark);
   --color-content-primary: var(--color-content-dark);
+  --color-surface-primary: var(--color-surface-dark);
+  --color-surface-strong: var(--color-surface-strong-dark);
+  --color-card-primary: var(--color-card-dark);
+  --color-border: var(--color-border-dark);
+  --color-topbar-bg: linear-gradient(89deg, #6591d5 0.35%, #d68176 53.84%, #f5d547 101.68%);
 
   /* Accent Colors - Theme Independent */
   --third-yellow-500: #f5d547;
@@ -20,4 +33,8 @@
 [data-theme="light"] {
   --color-background-primary: var(--color-background-light);
   --color-content-primary: var(--color-content-light);
+  --color-surface-primary: var(--color-surface-light);
+  --color-surface-strong: var(--color-surface-strong-light);
+  --color-card-primary: var(--color-card-light);
+  --color-border: var(--color-border-light);
 }
