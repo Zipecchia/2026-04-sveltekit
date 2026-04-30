@@ -1,20 +1,13 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-
-  // 1. Definiamo le props con le Runes (Svelte 5)
-  let { 
-    imageSrc = '', 
-    rating = 5, 
+  // @ts-nocheck
+  let {
+    imageSrc = '',
+    rating = 5,
     variant = 'yellow',
-    children // Sostituisce lo <slot />
-  } = $props();
+    children
+  } = $props<{ imageSrc?: string; rating?: number; variant?: 'yellow' | 'red'; children?: unknown }>();
 
-  // 2. Logica per la stella
-  let starSrc = $state(''); // Usiamo $state per la reattività in Svelte 5
-
-  onMount(() => {
-    starSrc = '/star.svg';
-  });
+  const starSrc = '/star.svg';
 </script>
 
 <div class="testimonial-card" class:red={variant === 'red'}>

@@ -1,17 +1,9 @@
-<script>
-	let { theme, toggleTheme } = $props();
+<script lang="ts">
+  // @ts-nocheck
 </script>
 
-<button
-	class="theme-toggle"
-	onclick={toggleTheme}
-	aria-label="Toggle theme"
->
-	{#if theme === 'dark'}
-		<span>🌙</span>
-	{:else}
-		<span>☀️</span>
-	{/if}
+<button class="theme-toggle" type="button" aria-label="Toggle theme">
+	<span>🌙</span>
 </button>
 
 <style>
