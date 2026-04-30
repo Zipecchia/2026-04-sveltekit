@@ -91,41 +91,51 @@
 
   <CategorySelector />
 
-  <!-- SEZIONE HIGHLIGHTS (Le card bianche in alto) -->
-  <section class="highlights-section" id="reviews">
-    <div class="section-header">
-      <h2>I migliori del 2025</h2>
-      <p>Scopri chi si è classificato al top in ogni categoria durante l’ultimo anno</p>
-    </div>
+<!-- SEZIONE HIGHLIGHTS -->
+<section class="highlights-section" id="reviews">
+  <div class="section-header">
+    <h2>I migliori del 2025</h2>
+    <p>Scopri chi si è classificato al top in ogni categoria durante l’ultimo anno</p>
+  </div>
 
-    <div class="highlight-grid">
-      {#each highlights as highlight}
-        <article class="highlight-card" style="border-color: {highlight.border}">
-          <div class="featured-ribbon">
-            <div class="featured-year" style="background-color: {highlight.border}">2025</div>
-            <div class="featured-ribbon-label" style="background-color: {highlight.border}">{highlight.badgeLabel}</div>
+  <div class="highlight-grid">
+    {#each highlights as highlight}
+      <article class="highlight-card" style="background-color: {highlight.border}">
+        <!-- Floating Badge -->
+        <div class="new-badge">
+          <div class="badge-circle" style="background-color: {highlight.border}">
+            <span>2025</span>
           </div>
-
-          <div class="highlight-media">
-            <img src={highlight.image} alt={highlight.label} />
+          <div class="badge-ribbon" style="background-color: {highlight.border}">
+            {highlight.badgeLabel}
           </div>
+        </div>
 
-          <div class="highlight-body">
-            <h3 class="highlight-title">{highlight.label}</h3>
-            <div class="highlight-details">
-              <img class="icon-pin" src={images.mapPin} alt="Posizione" />
-              <div class="address-text">
-                <p><strong>{highlight.location}</strong></p>
-                <p>{highlight.address}</p>
-                <p>{highlight.city}</p>
-              </div>
+        <div class="highlight-media">
+          <img src={highlight.image} alt={highlight.label} />
+        </div>
+
+        <div class="highlight-body">
+          <h3 class="highlight-title">{highlight.label}</h3>
+          <div class="highlight-details" style="display: flex; align-items: flex-start; gap: 8px;">
+            <img 
+              class="icon-pin" 
+              src={images.mapPin} 
+              alt="Posizione" 
+              style="width: 14px !important; height: 18px !important; object-fit: contain !important; flex-shrink: 0; margin-top: 4px; filter: brightness(0);" 
+              />
+            <div class="address-text" style="display: block;">
+            <p><strong>{highlight.location}</strong></p>
+            <p>{highlight.address}</p>
+            <p>{highlight.city}</p>
             </div>
           </div>
-        </article>
-      {/each}
-    </div>
-    <a class="link-arrow" href="#reviews">Vedi di più <span>→</span></a>
-  </section>
+        </div>
+      </article>
+    {/each}
+  </div>
+  <a class="link-arrow" href="#reviews">Vedi di più <span>→</span></a>
+</section>
 
   <!-- SEZIONE ARENA (Le card nere in basso) -->
   <section class="arena-section" id="about">
@@ -189,42 +199,109 @@
   .hero-tagline { font-size: 48px; font-weight: 600; color: white; margin-top: 10px; }
   .hero-copy p { font-size: 28px; max-width: 800px; margin: 20px auto; color: white; }
 
-  /* --- STILE 1: HIGHLIGHT CARDS (BIANCHE) --- */
-  .highlights-section { background-color: #000; padding: 80px 24px; }
+  /* --- STILE 1: HIGHLIGHT CARDS (AS PER IMAGE) --- */
+.highlights-section { 
+  background-color: #000; 
+  padding: 120px 24px; /* Increased padding for the floating badges */
+}
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 320px); /* Slightly narrower cards */
+  justify-content: center;
+  gap: 60px 40px;
+}
+
+.highlight-card {
+  border-radius: 24px;
+  position: relative;
+  color: #070707; /* Dark text as in image */
+  padding: 8px; /* Spacing between image and card edge */
+  display: flex;
+  flex-direction: column;
+  border: none; /* No border needed as the bg handles it */
+}
+
+/* Floating Badge Construction */
+.new-badge {
+  position: absolute;
+  top: -25px;
+  left: -15px;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+.badge-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.badge-ribbon {
+  margin-left: -10px;
+  padding: 6px 15px 6px 20px;
+  color: rgb(0, 0, 0);
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  clip-path: polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.highlight-media img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  display: block;
+  border-radius: 18px; /* Rounded corners for the image inside the card */
+}
+
+.highlight-body { 
+  padding: 16px 8px; 
+}
+
+.highlight-title { 
+  font-size: 24px; 
+  font-weight: 600; 
+  margin: 0 0 8px 0; 
+  font-family: var(--font-primary);
+}
+
+.highlight-details { 
+  display: flex; 
+  gap: 8px;
+  /* align-items: flex-start; is already set here in previous step */
+}
+
+.address-text p { 
+  margin: 0; 
+  font-size: 14px; 
+  line-height: 1.2; 
+  font-weight: 500;
+}
+
+.icon-pin { 
+  /* 1. Size control */
+  width: 14px; /* Slightly smaller as requested */
   
-  .highlight-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 370px);
-    justify-content: center;
-    gap: 40px;
-  }
+  /* 2. Anti-stretching fix */
+  height: auto;           /* Allow aspect ratio to define height */
+  object-fit: contain;     /* Ensure image fits its container box */
+  align-self: flex-start;  /* Prevent stretching by parent flexbox */
 
-  .highlight-card {
-    background: #ffffff; /* Sfondo Bianco */
-    border: 4px solid;
-    border-radius: 24px;
-    position: relative;
-    overflow: hidden;
-    color: #070707; /* Testo Nero */
-  }
-
-  .highlight-media img {
-    width: 100%;
-    aspect-ratio: 16/10;
-    object-fit: cover;
-    display: block;
-  }
-
-  .highlight-body { padding: 24px; }
-  .highlight-title { font-size: 30px; font-weight: 700; margin: 0 0 12px 0; text-transform: uppercase; }
-  .highlight-details { display: flex; gap: 12px; align-items: flex-start; }
-  .highlight-details p { margin: 0; font-size: 16px; line-height: 1.3; }
-  .icon-pin { width: 20px; margin-top: 4px; }
-
-  /* Ribbon per Highlights */
-  .featured-ribbon { position: absolute; top: -10px; left: 10px; display: flex; align-items: center; z-index: 5; }
-  .featured-year { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: white; font-size: 14px; }
-  .featured-ribbon-label { padding: 4px 12px; font-size: 12px; font-weight: bold; color: white; clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%); margin-left: -5px; }
+  /* 3. Positioning and style */
+  margin-top: 3px;         /* Vertically align with the first line of text */
+  filter: brightness(0);   /* Keep the pin black */
+}
 
   /* --- STILE 2: ARENA CARDS (NERE) --- */
   .arena-section {
@@ -235,7 +312,7 @@
 
   .arena-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 370px);
+    grid-template-columns: repeat(auto-fit, 320px);
     justify-content: center;
     gap: 40px;
     position: relative; z-index: 2;
@@ -251,7 +328,7 @@
     min-height: 520px;
   }
 
-  .arena-media { padding: 14px 14px 0 14px; }
+  .arena-media { padding: 8px 8px 0 8px; }
   .arena-media img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 20px; }
 
   .arena-body { padding: 24px; color: white; text-align: left; }
