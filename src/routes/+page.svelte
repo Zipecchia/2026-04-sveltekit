@@ -188,7 +188,7 @@
     margin-bottom: 48px;
     color: white;
   }
-  .section-header h2 { font-size: 50px; margin: 0; }
+  .section-header h2 { font-size: 50px;font-weight:600; margin: 0; }
   .section-header p { font-size: 26px; opacity: 0.9; }
 
   /* HERO */

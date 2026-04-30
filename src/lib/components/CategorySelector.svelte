@@ -128,8 +128,8 @@
   }
 
   .service-button {
-    width: 146.483px;
-    height: 112.516px;
+    width: auto;
+    height: 130px;
     border: 3.94px solid #dbdbdb;
     border-radius: 984.055px;
     background: #070707;
@@ -137,7 +137,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 12px;
+    padding: 0px 60px;
     box-sizing: border-box;
     transition: all 0.3s ease;
     overflow: hidden;
