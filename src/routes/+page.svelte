@@ -197,8 +197,10 @@
   .section-header p { font-size: 26px; opacity: 0.9; }
 
   /* HERO */
+
+  
   .hero-shell { 
-    padding: 72px 24px; 
+    padding: 1px 24px; 
     text-align: center; 
     background: 
     linear-gradient(0deg, var(--color-background-primary) 30%, transparent 100%), 
@@ -228,7 +230,7 @@
   .highlight-card {
     border-radius: 24px;
     position: relative;
-    z-index: 2; /* Over the sliding block */
+    z-index: 11; /* Over the sliding block */
     color: var(--color-content-primary);
     padding: 8px;
     display: flex;
@@ -243,25 +245,22 @@
     position: absolute;
     /* bottom: 0; Align to bottom so it slides out from the edge */
     bottom: 0;
-    left: 8px; /* Slightly inset from the card edges */
-    right: 8px;
-    z-index: 1; 
+    z-index: 10; 
     
     /* Style matched to image_f204a2.png */
-    background-color: var(--color-surface-strong);
+    background-color: var(--color-background-primary);
     color: var(--color-content-primary);
-    padding: 32px 20px 20px 20px; /* Extra top padding to handle the overlap */
+    padding: 12px; /* Extra top padding to handle the overlap */
     border: 4px solid var(--color-border);
-    border-radius: 28px; /* Very rounded corners per the image */
+    border-radius: 24px; /* Very rounded corners per the image */
     
     font-size: 16px;
     line-height: 1.4;
     font-weight: 500;
     
     /* Hidden State */
-    opacity: 0;
     transform: translateY(-10px);
-    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.3s ease;
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     pointer-events: none;
   }
 
@@ -284,27 +283,47 @@
     }
     .sliding-description {
       position: relative;
-      opacity: 1;
       transform: translateY(0);
       margin-top: -25px; /* Pull it up to "dock" with the card */
       padding-top: 35px;
       left: 0;
       right: 0;
-      background-color: var(--color-surface-strong) !important;
+      background-color: var(--color-background-strong) !important;
       border: 3px solid var(--color-border);
     }
   }
 
   /* BADGES & MEDIA */
-  .new-badge { position: absolute; top: -25px; left: -15px; display: flex; align-items: center; z-index: 10; }
-  .badge-circle { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--color-border); display: flex; align-items: center; justify-content: center; color: var(--color-content-primary); background: var(--color-surface-strong); font-weight: bold; }
-  .badge-ribbon { margin-left: -10px; padding: 6px 15px; color: var(--color-content-primary); font-size: 11px; font-weight: bold; clip-path: polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%); background: var(--color-surface-strong); }
+  .new-badge { 
+    position: absolute; 
+    top: -25px; 
+    left: -15px; 
+    display: flex; 
+    align-items: center; 
+    z-index: 10; }
+  .badge-circle { 
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    border: 2px solid var(--color-border); 
+    display: flex; align-items: center; 
+    justify-content: center; 
+    color: black; 
+    background: var(--color-surface-strong); 
+    font-weight: bold; }
+  .badge-ribbon { 
+    margin-left: -10px; 
+    padding: 6px 15px; 
+    color: black; 
+    font-size: 11px; font-weight: bold; 
+    clip-path: polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%); 
+    background: var(--color-surface-strong); }
   
-  .highlight-media img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 18px; }
-  .highlight-body { padding: 16px 8px; }
-  .highlight-title { font-size: 24px; font-weight: 600; margin-bottom: 4px; color: var(--color-content-primary); }
+  .highlight-media img { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 18px; margin-bottom: -12px; }
+  .highlight-body { padding:0px 0px 4px 4px; }
+  .highlight-title { font-size: 24px; font-weight: 600; margin-bottom: 4px; color: black; }
   .highlight-details { display: flex; gap: 8px; }
-  .address-text p { margin: 0; font-size: 14px; line-height: 1.2; color: var(--color-content-primary); }
+  .address-text p { margin: 0; font-size: 14px; line-height: 1.2; color: black; }
   .icon-pin { width: 14px; height: 18px; filter: brightness(0); margin-top: 4px; }
 
   /* ARENA SECTION */
@@ -321,8 +340,32 @@
   .gradient-overlay.top { top: 0; background: linear-gradient(to bottom, var(--color-background-primary), transparent); }
   .gradient-overlay.bottom { bottom: 0; background: linear-gradient(to top, var(--color-background-primary), transparent); }
   .centered h2 { font-size: 60px; }
-  .link-arrow { display: block; width: fit-content; margin: 40px auto 0; color: var(--color-content-primary); font-size: 28px; text-decoration: none; position: relative; z-index: 2; }
-  .page-footer { padding: 60px; background: var(--color-surface-primary); text-align: center; }
+  .link-arrow { 
+    display: block; 
+    width: fit-content; 
+    margin: 40px auto 0; 
+    color: var(--color-content-primary); 
+    font-size: 28px; 
+    text-decoration: none; 
+    position: relative; 
+    z-index: 1; }
+  .page-footer {
+    padding: 40px 24px;
+    background: black;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .page-footer img {
+    max-width: 220px;
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 
   @media (max-width: 1150px) {
     .highlight-grid, .arena-grid { grid-template-columns: 1fr; max-width: 370px; margin: 0 auto; }

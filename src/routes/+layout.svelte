@@ -78,7 +78,7 @@
         justify-content: space-between;
         gap: 24px;
         padding: 16px 48px;
-        background: var(--color-topbar-bg, linear-gradient(90deg, #48acdc 20%, #d68176 50%, #f5d547 80%));
+        background: var(--color-topbar-bg);
     }
 
     .topbar-brand,
