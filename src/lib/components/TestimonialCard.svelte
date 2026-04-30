@@ -81,8 +81,8 @@
   }
 
   .star {
-    width: 38.382px;
-    height: 36.135px;
+    width: 38px;
+    height: 36px;
     position: relative;
   }
 
