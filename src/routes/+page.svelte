@@ -556,7 +556,7 @@
       font-size: 22px;
     }
 
-    .hero-shell,
+    .hero.shell,
     .highlights,
     .best-arena,
     .page-footer {
