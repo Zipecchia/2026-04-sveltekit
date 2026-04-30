@@ -112,6 +112,19 @@
 
   <CategorySelector />
 
+  <section id="campi">
+    <!-- Content for campi -->
+  </section>
+  <section id="spogliatoi">
+    <!-- Content for spogliatoi -->
+  </section>
+  <section id="servizi">
+    <!-- Content for servizi -->
+  </section>
+  <section id="overall">
+    <!-- Content for overall -->
+  </section>
+
   <section class="highlights" id="reviews" style="background-color:black;">
      <div class="section-header">
     </div>
